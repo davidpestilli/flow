@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organograma da Diretoria de Direito Privado</title>
+  <script src="https://unpkg.com/gojs/release/go.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Link para o arquivo CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Organograma da Diretoria de Direito Privado</h2>
+  <button id="btnReset">Reset</button>
+  <div id="container">
+    <div class="bloco-diagrama">
+      <h2>UPJs</h2>
+      <div id="upjsDiagram" class="diagram-container"></div>
+      <div id="rotuloUPJs" class="rotulo">Coordenadorias</div>
+      <div id="numeroUPJs" class="numero"></div>
+      <div id="descricaoUPJs" class="descricao"></div>
+    </div>
+    
+    <div class="bloco-diagrama">
+      <h2 id="supervisoesHeader">Supervisões</h2>
+      <div id="supervisoesDiagram" class="diagram-container"></div>
+      <div id="rotuloSupervisoes" class="rotulo">Supervisões</div>
+      <div id="numeroSupervisoes" class="numero"></div>
+      <div id="descricaoSupervisoes" class="descricao"></div>
+    </div>
+    
+    <div class="bloco-diagrama">
+      <h2 id="chefiasHeader">Chefias</h2>
+      <div id="chefiasContainer">
+        <div id="chefiasDiagram" class="diagram-container"></div>
+        <!-- Janela lateral posicionada de forma absoluta para não alterar a altura do container -->
+        <div id="contentPanel">
+          <!-- Botões de link serão inseridos aqui via JavaScript -->
+        </div>
+        <!-- Botão “Conteúdo” (inicialmente oculto) -->
+        <button id="btnConteudo">Conteúdo</button>
+      </div>
+      <div id="rotuloChefias" class="rotulo">Chefias</div>
+      <div id="numeroChefias" class="numero"></div>
+      <div id="descricaoChefias" class="descricao"></div>
+    </div>
+  </div>
+  
+  <!-- Importa o script principal como módulo -->
+  <script type="module" src="main.js"></script>
+  
+  <!-- Janela Modal para a Descrição Sumária do Serviço -->
+  <div id="modalWindow" class="modal">
+    <div class="modal-content">
+      <span id="modalClose">&times;</span>
+      <div id="modalBody"></div>
+      <button id="modalButton">Acessar Conteúdo</button>
+    </div>
+  </div>
+  
+  <script type="module">
+    // Configura o fechamento do modal
+    document.getElementById("modalClose").onclick = () => {
+      import('./modal.js').then(module => {
+        module.closeModal();
+      });
+    };
+    // Também pode fechar clicando fora da área do conteúdo, se desejar
+    document.getElementById("modalWindow").onclick = (e) => {
+      if (e.target === document.getElementById("modalWindow")) {
+        import('./modal.js').then(module => {
+          module.closeModal();
+        });
+      }
+    };
+  </script>
+</body>
+</html>

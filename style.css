@@ -1,0 +1,187 @@
+/* Estilos Globais */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f4f4f9;
+    text-align: center;
+    margin: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Container principal */
+  #container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+  }
+  
+  /* Blocos dos diagramas */
+  .bloco-diagrama {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+  
+  /* Container dos diagramas */
+  .diagram-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background: #ffffff;
+    transition: 0.3s;
+    position: relative; /* Necessário para o posicionamento absoluto do overlay */
+  }
+  
+  /* Overlay para o texto de avaliação do GoJS */
+  .diagram-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 180px;
+    height: 90px;
+    background: #ffffff;
+    z-index: 2000;
+  }
+  
+  /* Rótulo e descrição */
+  .rotulo {
+    margin-top: 0.5em;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .descricao {
+    margin-top: 1em;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Configurações do diagrama de chefias */
+  #chefiasContainer {
+    position: relative;
+    height: 500px;
+  }
+  
+  #chefiasDiagram {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background: #ffffff;
+  }
+  
+  /* Ícones posicionados sobre o diagrama */
+  .icone {
+    position: absolute;
+    z-index: 999;
+    pointer-events: auto; 
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+  }
+  
+  
+  /* Número e outros detalhes */
+  .numero {
+    margin-top: 0.3em;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* Painel lateral de conteúdo no diagrama de chefias */
+  #contentPanel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    background: #f9f9f9;
+    border-left: 1px solid #ccc;
+    z-index: 10;
+  }
+  
+  /* Botão "Conteúdo" */
+  #btnConteudo {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Estilos do Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+  }
+  
+  .modal-content {
+    background: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    z-index: 10001;
+  }
+  
+  #modalClose {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  #modalBody {
+    text-align: left;
+  }
+  
+  /* Espaçamento entre itens de lista no modal */
+  #modalBody ul li {
+    margin-bottom: 10px;
+  }
+  
+  #modalButton {
+    display: none;
+    margin-top: 15px;
+  }
+  
