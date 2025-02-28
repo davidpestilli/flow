@@ -19,12 +19,40 @@ export function criarUPJs() {
       selectionAdorned: false,
       minSize: new go.Size(150, 50),
       mouseEnter: function(e, obj) {
-        // Atualiza a propriedade de dados "hovered" para true
+        // Define hovered para true
         obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", true);
+        // Atualiza os containers de UPJs com os dados do nó em hover
+        var data = obj.part.data;
+        document.getElementById("rotuloUPJs").textContent = data.isRoot ?
+          (data.name === "Diretoria" ? "Diretoria de Direito Privado" : "Coordenadoria da " + data.name) :
+          "Coordenadoria da " + data.name;
+        document.getElementById("numeroUPJs").textContent = data.numero || "";
+        document.getElementById("descricaoUPJs").textContent = getDescricaoUPJ(data.key);
       },
       mouseLeave: function(e, obj) {
-        // Restaura para false ao sair com o mouse
+        // Redefine hovered para false
         obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", false);
+        // Verifica se há algum nó selecionado (fixado via clique)
+        var diagram = obj.part.diagram;
+        var selectedNode = null;
+        diagram.nodes.each(function(n) {
+          if (n.data.selected) {
+            selectedNode = n;
+          }
+        });
+        if (selectedNode) {
+          var data = selectedNode.data;
+          document.getElementById("rotuloUPJs").textContent = data.isRoot ?
+            (data.name === "Diretoria" ? "Diretoria de Direito Privado" : "Coordenadoria da " + data.name) :
+            "Coordenadoria da " + data.name;
+          document.getElementById("numeroUPJs").textContent = data.numero || "";
+          document.getElementById("descricaoUPJs").textContent = getDescricaoUPJ(data.key);
+        } else {
+          // Se nenhum nó estiver selecionado, limpa o container
+          document.getElementById("rotuloUPJs").textContent = "";
+          document.getElementById("numeroUPJs").textContent = "";
+          document.getElementById("descricaoUPJs").textContent = "";
+        }
       },
       click: function(e, obj) {
         limparContainer("Supervisoes");

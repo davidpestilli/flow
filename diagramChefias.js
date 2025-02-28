@@ -19,12 +19,51 @@ export function criarChefias() {
         // Utiliza minSize para garantir um tamanho mínimo, mas permitindo expansão conforme o conteúdo
         minSize: new go.Size(150, 50),
         mouseEnter: function(e, obj) {
-          // Atualiza a propriedade de dados "hovered" para true
           obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", true);
+          var data = obj.part.data;
+          // Atualiza os containers de Chefias conforme o tipo de nó
+          if (data.isRoot) {
+            document.getElementById("rotuloChefias").textContent = "Supervisão de " + data.name;
+            document.getElementById("numeroChefias").textContent = data.numero || "";
+            document.getElementById("descricaoChefias").textContent = "";
+          } else if (data.name === "Nenhuma chefia encontrada") {
+            document.getElementById("rotuloChefias").textContent = "Nenhuma chefia encontrada";
+            document.getElementById("numeroChefias").textContent = "";
+            document.getElementById("descricaoChefias").textContent = "";
+          } else {
+            document.getElementById("rotuloChefias").textContent = "Chefia de " + data.name;
+            document.getElementById("numeroChefias").textContent = data.numero || "";
+            document.getElementById("descricaoChefias").textContent = data.desc || "";
+          }
         },
         mouseLeave: function(e, obj) {
-          // Restaura para false ao sair com o mouse
           obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", false);
+          var diagram = obj.part.diagram;
+          var selectedNode = null;
+          diagram.nodes.each(function(n) {
+            if (n.data.selected) { selectedNode = n; }
+          });
+          if (selectedNode) {
+            var data = selectedNode.data;
+            if (data.isRoot) {
+              document.getElementById("rotuloChefias").textContent = "Supervisão de " + data.name;
+              document.getElementById("numeroChefias").textContent = data.numero || "";
+              document.getElementById("descricaoChefias").textContent = "";
+            } else if (data.name === "Nenhuma chefia encontrada") {
+              document.getElementById("rotuloChefias").textContent = "Nenhuma chefia encontrada";
+              document.getElementById("numeroChefias").textContent = "";
+              document.getElementById("descricaoChefias").textContent = "";
+            } else {
+              document.getElementById("rotuloChefias").textContent = "Chefia de " + data.name;
+              document.getElementById("numeroChefias").textContent = data.numero || "";
+              document.getElementById("descricaoChefias").textContent = data.desc || "";
+            }
+          } else {
+            // Se nenhum nó estiver selecionado, limpa os containers
+            document.getElementById("rotuloChefias").textContent = "";
+            document.getElementById("numeroChefias").textContent = "";
+            document.getElementById("descricaoChefias").textContent = "";
+          }
         },
         click: function(e, obj) {
 

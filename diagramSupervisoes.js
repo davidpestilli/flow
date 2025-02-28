@@ -19,12 +19,43 @@ export function criarSupervisoes() {
       selectionAdorned: false,
       minSize: new go.Size(150, 50),
       mouseEnter: function(e, obj) {
-        // Atualiza a propriedade de dados "hovered" para true
+        // Define o estado de hover
         obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", true);
+        var data = obj.part.data;
+        // Atualiza os containers de Supervisões
+        document.getElementById("rotuloSupervisoes").textContent = data.isRoot ?
+          "Coordenadoria da " + data.name :
+          "Supervisão de " + data.name;
+        document.getElementById("numeroSupervisoes").textContent = data.numero || "";
+        document.getElementById("descricaoSupervisoes").textContent = getDescricaoSupervisao(data.key);
+        document.getElementById("chefiasHeader").textContent = "Chefias da Supervisão de " + data.name + " da " + window.upjSelecionada;
       },
       mouseLeave: function(e, obj) {
-        // Restaura para false ao sair com o mouse
+        // Restaura o estado de hover para false
         obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", false);
+        var diagram = obj.part.diagram;
+        var selectedNode = null;
+        diagram.nodes.each(function(n) {
+          if (n.data.selected) {
+            selectedNode = n;
+          }
+        });
+        if (selectedNode) {
+          var data = selectedNode.data;
+          // Restaura os dados do nó fixado
+          document.getElementById("rotuloSupervisoes").textContent = data.isRoot ?
+            "Coordenadoria da " + data.name :
+            "Supervisão de " + data.name;
+          document.getElementById("numeroSupervisoes").textContent = data.numero || "";
+          document.getElementById("descricaoSupervisoes").textContent = getDescricaoSupervisao(data.key);
+          document.getElementById("chefiasHeader").textContent = "Chefias da Supervisão de " + data.name + " da " + window.upjSelecionada;
+        } else {
+          // Se nenhum nó estiver selecionado, limpa os containers
+          document.getElementById("rotuloSupervisoes").textContent = "";
+          document.getElementById("numeroSupervisoes").textContent = "";
+          document.getElementById("descricaoSupervisoes").textContent = "";
+          document.getElementById("chefiasHeader").textContent = "Chefias";
+        }
       },
       click: function(e, obj) {
         limparContainer("Chefias");
