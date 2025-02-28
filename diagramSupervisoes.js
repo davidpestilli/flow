@@ -28,7 +28,6 @@ export function criarSupervisoes() {
           "Supervisão de " + data.name;
         document.getElementById("numeroSupervisoes").textContent = data.numero || "";
         document.getElementById("descricaoSupervisoes").textContent = getDescricaoSupervisao(data.key);
-        document.getElementById("chefiasHeader").textContent = "Chefias da Supervisão de " + data.name + " da " + window.upjSelecionada;
       },
       mouseLeave: function(e, obj) {
         // Restaura o estado de hover para false
@@ -48,13 +47,11 @@ export function criarSupervisoes() {
             "Supervisão de " + data.name;
           document.getElementById("numeroSupervisoes").textContent = data.numero || "";
           document.getElementById("descricaoSupervisoes").textContent = getDescricaoSupervisao(data.key);
-          document.getElementById("chefiasHeader").textContent = "Chefias da Supervisão de " + data.name + " da " + window.upjSelecionada;
         } else {
           // Se nenhum nó estiver selecionado, limpa os containers
           document.getElementById("rotuloSupervisoes").textContent = "";
           document.getElementById("numeroSupervisoes").textContent = "";
           document.getElementById("descricaoSupervisoes").textContent = "";
-          document.getElementById("chefiasHeader").textContent = "Chefias";
         }
       },
       click: function(e, obj) {
