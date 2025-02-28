@@ -208,3 +208,30 @@ button {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
+  /* Estilos para o header de instruções */
+#headerInstrucoes {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;       /* Tamanho adequado para destaque */
+    font-weight: 600;      /* Peso para evidenciar a mensagem */
+    background-color: #e8f0fe; /* Fundo sutil (pode ajustar a cor conforme preferir) */
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 20px auto;     /* Espaçamento superior e inferior */
+    max-width: 1400px;     /* Limita a largura para manter a consistência com o container */
+    text-align: center;
+}
+
+/* Estilos para simular o botão "Conteúdo" no header */
+.simulacao-botao {
+    display: inline-block;
+    padding: 5px 10px;              /* Menor que o botão real */
+    font-size: 14px;                /* Tamanho reduzido */
+    background-color: #007bff;      /* Mesma cor do botão real */
+    color: #fff;
+    border-radius: 5px;
+    margin: 0 4px;                /* Espaço em volta */
+    vertical-align: middle;
+    pointer-events: none;           /* Garante que não seja clicável */
+}
+
