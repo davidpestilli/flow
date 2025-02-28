@@ -245,3 +245,13 @@ button {
 #contentPanel button:hover {
   border: 2px solid #000 !important;
 }
+
+#chefiasDiagram {
+  overflow: hidden !important;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+#chefiasDiagram::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
