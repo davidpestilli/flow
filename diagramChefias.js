@@ -263,7 +263,7 @@ function atualizarPainelConteudo(chefiaData) {
     const btn = document.createElement("button");
     btn.textContent = link.texto;
     btn.style.display = "block";
-    btn.style.margin = "5px 0";
+    btn.style.margin = "5px 10px";  // Alterado para adicionar margem lateral
     btn.style.padding = "10px 20px";
     btn.style.fontSize = "16px";
     btn.style.backgroundColor = "#28a745";  // cor dos botões de documento
