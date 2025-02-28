@@ -17,6 +17,14 @@ export function criarSupervisoes() {
   $(go.Node, "Auto",
     { 
       desiredSize: new go.Size(150, 50),
+      mouseEnter: function(e, obj) {
+        // Atualiza a propriedade de dados "hovered" para true
+        obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", true);
+      },
+      mouseLeave: function(e, obj) {
+        // Restaura para false ao sair com o mouse
+        obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", false);
+      },
       click: function(e, obj) {
         limparContainer("Chefias");
 
@@ -56,7 +64,9 @@ export function criarSupervisoes() {
       { desiredSize: new go.Size(150, 50) },
       // Usa a binding modificada para definir a cor
       new go.Binding("fill", "", nodeFillConverter),
-      new go.Binding("strokeWidth", "isRoot", function(b){ return b ? 3 : 1; })
+      new go.Binding("strokeWidth", "", function(data) {
+        return data.hovered ? 4 : (data.isRoot ? 3 : 1);
+      })
     ),
     $(go.TextBlock,
       { margin: 0, font: "bold 16px Arial", stroke: "black", textAlign: "center", verticalAlignment: go.Spot.Center, alignment: go.Spot.Center },

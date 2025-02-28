@@ -185,3 +185,26 @@ body {
     margin-top: 15px;
   }
   
+  /* Estilização para todos os botões interativos */
+button {
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Efeito de hover para os botões, como btnReset e btnConteudo */
+  button:hover {
+    background-color: #0056b3; /* Altere conforme sua paleta */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Opcional: Realce para os blocos dos diagramas */
+  .bloco-diagrama {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .bloco-diagrama:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  

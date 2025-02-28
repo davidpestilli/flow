@@ -17,6 +17,14 @@ export function criarUPJs() {
   $(go.Node, "Auto",
     { 
       desiredSize: new go.Size(150, 50),
+      mouseEnter: function(e, obj) {
+        // Atualiza a propriedade de dados "hovered" para true
+        obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", true);
+      },
+      mouseLeave: function(e, obj) {
+        // Restaura para false ao sair com o mouse
+        obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", false);
+      },
       click: function(e, obj) {
         limparContainer("Supervisoes");
         limparContainer("Chefias");
@@ -70,7 +78,9 @@ export function criarUPJs() {
       { desiredSize: new go.Size(150, 50) },
       // Substitua a binding de "fill" para usar o nodeFillConverter
       new go.Binding("fill", "", nodeFillConverter),
-      new go.Binding("strokeWidth", "isRoot", function(b){ return b ? 3 : 1; })
+      new go.Binding("strokeWidth", "", function(data) {
+        return data.hovered ? 4 : (data.isRoot ? 3 : 1);
+      })
     ),
     $(go.TextBlock,
       { margin: 10, font: "bold 16px Arial", stroke: "black", textAlign: "center", alignment: go.Spot.Center },
