@@ -74,9 +74,8 @@ export function criarUPJs() {
         document.getElementById("descricaoChefias").textContent = "";
       }
     },
-    $(go.Shape, "Rectangle",
+    $(go.Shape, "RoundedRectangle",
       { desiredSize: new go.Size(150, 50) },
-      // Substitua a binding de "fill" para usar o nodeFillConverter
       new go.Binding("fill", "", nodeFillConverter),
       new go.Binding("strokeWidth", "", function(data) {
         return data.hovered ? 4 : (data.isRoot ? 3 : 1);

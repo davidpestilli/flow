@@ -60,9 +60,8 @@ export function criarSupervisoes() {
         carregarChefias(obj.part.data.key);
       }
     },
-    $(go.Shape, "Rectangle",
+    $(go.Shape, "RoundedRectangle",
       { desiredSize: new go.Size(150, 50) },
-      // Usa a binding modificada para definir a cor
       new go.Binding("fill", "", nodeFillConverter),
       new go.Binding("strokeWidth", "", function(data) {
         return data.hovered ? 4 : (data.isRoot ? 3 : 1);

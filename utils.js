@@ -3,8 +3,14 @@ export function nodeFillConverter(data, obj) {
   var diagram = obj.part.diagram;
   var selectedNode = null;
   diagram.nodes.each(function(n) {
-    if (n.data.selected) {
-      selectedNode = n;
+    if (diagramId === "upjsDiagram") {
+      defaultFill = data.isRoot ? "#1E40AF" : "#60A5FA";  // tons de azul
+    } else if (diagramId === "supervisoesDiagram") {
+      defaultFill = data.isRoot ? "#047857" : "#10B981";  // tons de verde
+    } else if (diagramId === "chefiasDiagram") {
+      defaultFill = data.isRoot ? "#B45309" : "#F59E0B";  // tons de âmbar
+    } else {
+      defaultFill = "white";
     }
   });
   

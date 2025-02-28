@@ -73,13 +73,13 @@ export function criarChefias() {
           }
         }
       },
-      $(go.Shape, "Rectangle",
+      $(go.Shape, "RoundedRectangle",
         { name: "SHAPE", minSize: new go.Size(150, 50) },
         new go.Binding("fill", "", nodeFillConverter),
         new go.Binding("strokeWidth", "", function(data) {
           return data.hovered ? 4 : (data.isRoot ? 3 : 1);
         })
-      ),
+      ),   
       $(go.TextBlock,
         {
           margin: 10,
