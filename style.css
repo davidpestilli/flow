@@ -58,12 +58,13 @@ body {
   /* Rótulo e descrição */
   .rotulo {
     margin-top: 0.5em;
+    margin-bottom: 0.1em; /* Força uma distância menor abaixo do rótulo principal */
     font-weight: 600;
     color: #444;
   }
   
   .descricao {
-    margin-top: 1em;
+    margin-top: 0.5em;
     font-style: italic;
     font-size: 0.9rem;
     color: #666;
@@ -105,7 +106,7 @@ body {
   
   /* Número e outros detalhes */
   .numero {
-    margin-top: 0.3em;
+    margin-top: 0.5em;
     font-weight: 500;
     color: #555;
   }
@@ -254,4 +255,8 @@ button {
 
 #chefiasDiagram::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+.rotulo, .descricao {
+  min-height: 50px; /* Ajuste esse valor conforme necessário para acomodar os maiores textos */
 }
