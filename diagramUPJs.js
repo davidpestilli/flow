@@ -16,7 +16,7 @@ export function criarUPJs() {
   diagramaUPJs.nodeTemplate =
   $(go.Node, "Auto",
     { 
-      desiredSize: new go.Size(150, 50),
+      minSize: new go.Size(150, 50),
       mouseEnter: function(e, obj) {
         // Atualiza a propriedade de dados "hovered" para true
         obj.part.diagram.model.setDataProperty(obj.part.data, "hovered", true);
@@ -75,7 +75,7 @@ export function criarUPJs() {
       }
     },
     $(go.Shape, "RoundedRectangle",
-      { desiredSize: new go.Size(150, 50) },
+      { minSize: new go.Size(150, 50) },
       new go.Binding("fill", "", nodeFillConverter),
       new go.Binding("strokeWidth", "", function(data) {
         return data.hovered ? 4 : (data.isRoot ? 3 : 1);
