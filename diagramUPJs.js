@@ -16,6 +16,7 @@ export function criarUPJs() {
   diagramaUPJs.nodeTemplate =
   $(go.Node, "Auto",
     { 
+      selectionAdorned: false,
       minSize: new go.Size(150, 50),
       mouseEnter: function(e, obj) {
         // Atualiza a propriedade de dados "hovered" para true
@@ -78,7 +79,7 @@ export function criarUPJs() {
       { minSize: new go.Size(150, 50) },
       new go.Binding("fill", "", nodeFillConverter),
       new go.Binding("strokeWidth", "", function(data) {
-        return data.hovered ? 4 : (data.isRoot ? 3 : 1);
+        return data.hovered ? 4 : (data.isRoot ? 1 : 1);
       })
     ),
     $(go.TextBlock,

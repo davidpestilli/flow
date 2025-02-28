@@ -15,6 +15,7 @@ export function criarChefias() {
   diagramaChefias.nodeTemplate =
     $(go.Node, "Auto",
       {
+        selectionAdorned: false,
         // Utiliza minSize para garantir um tamanho mínimo, mas permitindo expansão conforme o conteúdo
         minSize: new go.Size(150, 50),
         mouseEnter: function(e, obj) {
@@ -77,7 +78,7 @@ export function criarChefias() {
         { name: "SHAPE", minSize: new go.Size(150, 50) },
         new go.Binding("fill", "", nodeFillConverter),
         new go.Binding("strokeWidth", "", function(data) {
-          return data.hovered ? 4 : (data.isRoot ? 3 : 1);
+          return data.hovered ? 4 : (data.isRoot ? 1 : 1);
         })
       ),   
       $(go.TextBlock,
