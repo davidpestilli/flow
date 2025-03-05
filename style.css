@@ -16,6 +16,7 @@ body {
   #container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Permite que os diagramas quebrem linha em telas menores */
     gap: 2rem;
     width: 100%;
     max-width: 1400px;
@@ -35,7 +36,8 @@ body {
   /* Container dos diagramas */
   .diagram-container {
     width: 100%;
-    height: 500px;
+    height: 50vh; /* Usa 50% da altura da tela */
+    min-height: 300px; /* Define um tamanho mínimo */
     border-radius: 8px;
     border: 2px solid #ccc;
     background: #ffffff;
@@ -259,4 +261,42 @@ button {
 
 .rotulo, .descricao {
   min-height: 50px; /* Ajuste esse valor conforme necessário para acomodar os maiores textos */
+}
+
+
+/* Ajuste de tamanhos responsivos para títulos e botões */
+h2 {
+  font-size: clamp(18px, 3vw, 24px); /* Ajusta dinamicamente o tamanho do título */
+}
+
+button {
+  font-size: clamp(14px, 2vw, 16px); /* Ajusta dinamicamente o tamanho do botão */
+  padding: 10px 20px;
+}
+
+/* ajustar melhor a disposição em dispositivos móveis e telas pequenas */
+@media (max-width: 1024px) {
+  #container {
+      flex-direction: column; /* Empilhar os elementos verticalmente */
+      align-items: center;
+  }
+
+  .bloco-diagrama {
+      width: 90%;
+      max-width: 600px;
+  }
+
+  .diagram-container {
+      height: 400px; /* Reduz o tamanho em telas menores */
+  }
+}
+
+@media (max-width: 600px) {
+  .diagram-container {
+      height: 300px; /* Mais compacto em telas muito pequenas */
+  }
+
+  #contentPanel {
+      width: 100%; /* Ocupa a tela inteira quando aberto */
+  }
 }

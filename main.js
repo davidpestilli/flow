@@ -47,3 +47,14 @@ window.onload = function() {
     location.reload();
   });
 };
+
+window.addEventListener("resize", function() {
+  const diagramaUPJs = getDiagramaUPJs();
+  const diagramaSupervisoes = getDiagramaSupervisoes();
+  const diagramaChefias = getDiagramaChefias();
+
+  if (diagramaUPJs) diagramaUPJs.zoomToFit();
+  if (diagramaSupervisoes) diagramaSupervisoes.zoomToFit();
+  if (diagramaChefias) diagramaChefias.zoomToFit();
+});
+S
