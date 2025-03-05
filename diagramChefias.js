@@ -156,6 +156,18 @@ export function criarChefias() {
       fecharPainelConteudo();
     }
   });
+
+// Adiciona funcionalidade para fechar ao clicar fora do painel
+document.body.addEventListener("click", function(e) {
+  const panel = document.getElementById("contentPanel");
+  const btnConteudo = document.getElementById("btnConteudo");
+
+  // Verifica se o clique foi fora do painel e do botão "Conteúdo"
+  if (panel.style.width === "300px" && !panel.contains(e.target) && e.target !== btnConteudo) {
+      fecharPainelConteudo();
+  }
+});
+
 }
 
 export function carregarChefias(supKey) {
