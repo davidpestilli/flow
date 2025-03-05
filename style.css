@@ -42,7 +42,8 @@ body {
     border: 2px solid #ccc;
     background: #ffffff;
     transition: 0.3s;
-    position: relative; /* Necessário para o posicionamento absoluto do overlay */
+    z-index: 3
+    position: absolute; /* Necessário para o posicionamento absoluto do overlay */
   }
   
   /* Overlay para o texto de avaliação do GoJS */
