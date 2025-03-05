@@ -62,20 +62,23 @@
   </div>
   
   <script type="module">
-    // Configura o fechamento do modal
+    import { closeModal } from "./modal.js";
+    
+    // Torna a função acessível no console e em eventos dinâmicos
+    window.closeModal = closeModal;
+
+    // Configura o fechamento do modal pelo botão "X"
     document.getElementById("modalClose").onclick = () => {
-      import('./modal.js').then(module => {
-        module.closeModal();
-      });
+        closeModal();
     };
-    // Também pode fechar clicando fora da área do conteúdo, se desejar
+
+    // Fecha o modal ao clicar fora dele
     document.getElementById("modalWindow").onclick = (e) => {
-      if (e.target === document.getElementById("modalWindow")) {
-        import('./modal.js').then(module => {
-          module.closeModal();
-        });
-      }
+        if (e.target === document.getElementById("modalWindow")) {
+            closeModal();
+        }
     };
-  </script>
+</script>
+
 </body>
 </html>

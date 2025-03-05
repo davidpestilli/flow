@@ -21,7 +21,17 @@ export function openModal(chefiaData, chefiaTexts) {
   }
   
   export function closeModal() {
+    console.log("Fechando modal e ocultando botão");
+
     const modal = document.getElementById("modalWindow");
     modal.style.display = "none";
-  }
-  
+
+    // Oculta o botão "Conteúdo"
+    const btnConteudo = document.getElementById("btnConteudo");
+    if (btnConteudo) {
+        btnConteudo.style.display = "none";
+    }
+}
+
+// Torna a função globalmente acessível (caso seja chamada dinamicamente)
+window.closeModal = closeModal;

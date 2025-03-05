@@ -57,4 +57,4 @@ window.addEventListener("resize", function() {
   if (diagramaSupervisoes) diagramaSupervisoes.zoomToFit();
   if (diagramaChefias) diagramaChefias.zoomToFit();
 });
-S
+
