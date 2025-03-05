@@ -301,3 +301,12 @@ button {
       width: 100%; /* Ocupa a tela inteira quando aberto */
   }
 }
+
+@media (max-width: 600px) {
+  .diagram-container::after {
+      top: 0;
+      left: 0;
+      width: 176px; /* Reduz mais o tamanho no mobile */
+      height: 80px; /* Ajusta a altura para telas pequenas */
+  }
+}
